@@ -2,4 +2,4 @@
 
 `Rfun/` contains custom functions used in the scripts<br>
 
-`plot/` contains plots (pdf) used
+`plot/` contains plots (pdf) used to mount figures in Adobe Illustrator
