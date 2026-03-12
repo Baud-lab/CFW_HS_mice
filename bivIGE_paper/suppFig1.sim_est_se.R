@@ -88,7 +88,7 @@ empSTE = empSTE[colnames(STE[,-chrcol])]
 
 # Plot estimates
 h = 6; w = 7 
-out_file=file.path(out_dir, "Sfig1.sim_est.pdf")
+out_file=file.path(out_dir, "SFig1.sim_est.pdf")
 cat("Saving plot to ", out_file, "\n")
 pdf(out_file, height = h, width = w, bg="white") 
 par(pch=16, cex.axis= 1.1)
@@ -103,7 +103,7 @@ bplot_estSim(est1 = est,
 nemo=dev.off()
 
 # Plot standard errors
-out_file=file.path(out_dir, "Sfig1.sim_se.pdf")
+out_file=file.path(out_dir, "SFig1.sim_se.pdf")
 cat("Saving plot to ", out_file, "\n")
 pdf(out_file, height = h, width = w)  
 par(pch=16, cex.axis= 1.1)
@@ -120,7 +120,7 @@ nemo=dev.off()
 
 # Plot coverage probability
 library("rsimsum")
-out_file=file.path(out_dir, "Sfig1.sim_covProb.pdf")
+out_file=file.path(out_dir, "SFig1.sim_covProb.pdf")
 pdf(out_file, h = 7, w = 12) 
 par(mar = c(4, 8, 3, 2), mfrow=c(1,2))  # Margins: (bottom, left, top, right)
 plot_performance = function(perf, main){

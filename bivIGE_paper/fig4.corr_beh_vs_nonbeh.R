@@ -2,13 +2,13 @@
 # pop = "HSmice"; pop_main = "HS mice"
 # bi_est_dir = "~/nf_PRJs/nf-CoreQuantGen/realdata/output/HSmice/VD/bivariate/data_bcNcovariates/Andres_kinship_None_DGE_IGE_cageEffect/"
 # macro_file = "~/PRJs/HSmice/output/dataset/macropheno_HSmice.csv"
-# outfile = "./plot/HSmice/fig4.corr_beh_vs_nonb_merge.pdf"
+# outfile = "./plot/HSmice/Fig4.corr_beh_vs_nonb_merge.pdf"
 
 ### CFW - comment lines for HSmice ####
 pop = "CFW"; pop_main = "CFW mice"
 bi_est_dir = "~/nf_PRJs/nf-CoreQuantGen/realdata/output/CFW/VD/bivariate/noBatch/pruned_dosages_include_DGE_IGE_cageEffect/"
 macro_file = "~/PRJs/CFW/output/dataset/macropheno_CFW.csv"
-outfile = "./plot/CFW/fig4.corr_beh_vs_nonb_merge.pdf"
+outfile = "./plot/CFW/Fig4.corr_beh_vs_nonb_merge.pdf"
 
 
 # Listing files in output directory

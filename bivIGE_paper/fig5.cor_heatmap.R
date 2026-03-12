@@ -340,7 +340,7 @@ if(pop=="HSmice"){
 # This is to remove the coroi from the labels (which I don't like because easy to lose track but looks better in the plot)
 rownames(mat.toplot) = rownames(p_mat.toplot) = gsub(paste0(".",coroi), "", rownames(mat.toplot)) # 
 
-outpdf = file.path(outDir, paste0("fig5.",coroi,"_heatmap.pdf")); cat("saving plot in ", outpdf, "\n")
+outpdf = file.path(outDir, paste0("Fig5.",coroi,"_heatmap.pdf")); cat("saving plot in ", outpdf, "\n")
 
 # Heatmap - with clustering based on corr value --------
 pdf(outpdf, h=h, w =w)
@@ -354,7 +354,7 @@ library("ggsci")
 #mycolors = pal_npg("nrc")(10) #c("black", "#DF536B", "#61D04F", "#2297E6", "#28E2E5", "#CD0BBC", "#F5C710", "gray62", "darkviolet", "darkorange3") # = 1:8 ; + other two
 mycolors = c("#e40203","#ff8b00", "#feed01", "#007f24", "#004dff", "#760789")
 
-outpdf = file.path(outDir, paste0("fig5.",coroi,"_tree.pdf")); cat("saving plot in ", outpdf, "\n")
+outpdf = file.path(outDir, paste0("Fig5.",coroi,"_tree.pdf")); cat("saving plot in ", outpdf, "\n")
 h.t=6; w.t = 15
 pdf(outpdf, h=h.t, w =w.t)
 k = 6

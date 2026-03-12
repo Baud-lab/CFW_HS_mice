@@ -7,7 +7,7 @@ ymax = 0.32 # Same as Santostefano et al. 2025
 pop="HSmice"; popmain="HS mice"
 unires = "~/PRJs/HSmice/output/VDreal_2311/univariate/data_bcNcovariates_500/Andres_kinship_DGE_IGE_cageEffect_estNste.Rdata"
 macro="~/PRJs/HSmice/output/dataset/macropheno_HSmice.csv"
-colbycat = F; outfile = "./plot/HSmice/fig3.IGE_bplot_behav_nonbeh.pdf"
+colbycat = F; outfile = "./plot/HSmice/Fig3.IGE_bplot_behav_nonbeh.pdf"
 # To colour by phenotypic category instead of by beh / non-beh uncomment below
 #colbycat = T; outfile = "./plot/HSmice/IGE_bplot_behav_nonbeh_colbycat.pdf"
 
@@ -16,7 +16,7 @@ colbycat = F; outfile = "./plot/HSmice/fig3.IGE_bplot_behav_nonbeh.pdf"
 # pop = "CFW"; popmain="CFW mice"
 # unires = "~/PRJs/CFW/output/VDreal_2310/univariate/noBatch_500/pruned_dosages_include_DGE_IGE_cageEffect_estNste.Rdata"
 # macro="~/PRJs/CFW/output/dataset/macropheno_CFW.csv"
-# colbycat = F; outfile = "./plot/CFW/fig3.IGE_bplot_behav_nonbeh.pdf"
+# colbycat = F; outfile = "./plot/CFW/Fig3.IGE_bplot_behav_nonbeh.pdf"
 # # To colour by phenotypic category instead of by beh / non-beh uncomment below
 # #colbycat = T; outfile = "./plot/CFW/IGE_bplot_behav_nonbeh_colbycat.pdf"
 

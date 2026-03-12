@@ -96,7 +96,7 @@ sizes <- min_size + (breaks - min_val) / (max_val - min_val) * (max_size - min_s
 at.dict = seq_along(lev); names(at.dict) = lev
 #coolors = sapply(at.dict, function(x) ifelse(x == 3 | x == 4, "#B894B1", "grey50"))
 
-pdf("./plot/rev_Santostefano/fig3.IGE_beh_nonb.pdf", h=6, w=5)
+pdf("./plot/rev_Santostefano/Fig3.IGE_beh_nonb.pdf", h=6, w=5)
 par(mar=c(6.1,4.6,3.1,6.6))
 
 set.seed(2)

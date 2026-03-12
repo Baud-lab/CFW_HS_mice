@@ -26,7 +26,7 @@ print(seeds)
 
 # Define input and output depending on seed and id of each set
 sim_files = paste0("~/nf_PRJs/nf-CoreQuantGen/simulations/output/simCFW/VD/cage_623/set",id,"/DG1_IG2/0.0/",seeds,"/bivariate/mockphenos/pruned_dosages_DGE_IGE_cageEffect_corr_Ad1s2_all_est.txt")
-outfile = paste0("./plot/CFW/Sfig2.qqplot_", id, ".pdf")
+outfile = paste0("./plot/CFW/SFig2.qqplot_", id, ".pdf")
 
 # Read realdata to get the names of phenotypes and the p-value observed in real data
 VCs.mat = read.table(altfile, header = T, sep="\t")
