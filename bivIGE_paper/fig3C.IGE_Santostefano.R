@@ -1,5 +1,5 @@
 # Defining new classes according to our definition
-new_class = c(                                "aggression" = "social behaviour",      
+new_cat = c(                                "aggression" = "social behaviour",      
                                            "approach rate" = "social behaviour",      
                                   "naso-anal contact rate" = "social behaviour",      
                                            "mounting rate" = "social behaviour",      
@@ -40,6 +40,9 @@ new_class = c(                                "aggression" = "social behaviour",
                                                  "divorce" = "social behaviour",      
                                               "Aggression" = "social behaviour",      
                                         "Social dominance" = "social behaviour")
+# Save table for suppTable6
+#write.table(data.frame("phenotype"=names(new_cat), "category"=gsub("\n"," ",new_cat)), "./plot/rev_Santostefano/suppTable6.tsv", sep = "\t", quote = F, row.names = F)
+
 coolors = c("assumed\nsocial behaviour" = "grey65", 
             "social behaviour" = "grey65", 
             "non-social\nbehaviour" = "#B894B1", 
@@ -56,7 +59,7 @@ data.1A = cbind(dataset.IGE.subset1A[,c("Paper_id","Record_id", "Trait_name", "T
 #summary(data.1A$y - data.1A$Social_h2_2)
 
 lev = c("non-behaviour", "non-social\nbehaviour","social behaviour", "assumed\nsocial behaviour")
-data.1A[,"new_category"] = factor(sapply(data.1A[,"Trait_name"], function(x){ifelse(x %in% names(new_class), new_class[x], "non-behaviour")}), 
+data.1A[,"new_category"] = factor(sapply(data.1A[,"Trait_name"], function(x){ifelse(x %in% names(new_cat), new_cat[x], "non-behaviour")}), 
                                   levels = lev)
 revlev = lev
 data.1A[,"tick"] = as.numeric(factor(data.1A$new_category, levels = revlev))
