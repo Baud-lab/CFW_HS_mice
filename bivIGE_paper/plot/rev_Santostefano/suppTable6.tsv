@@ -1,23 +1,61 @@
 phenotype	category
-aggression	social behaviour
-approach rate	social behaviour
-naso-anal contact rate	social behaviour
-mounting rate	social behaviour
-rearing rate	social behaviour
-reciprocal latency to fight	social behaviour
-neck bite marks	assumed social behaviour
-tail bite marks	assumed social behaviour
-body bite marks	assumed social behaviour
-feeding rates	non-social behaviour
+body mass	non-behaviour
+carcass weight (CW)	non-behaviour
+lean meat content (LM)	non-behaviour
+ham round shape score (RS)	non-behaviour
+androstenone level (AND)	non-behaviour
+growth rate	non-behaviour
+breeding date	non-behaviour
+growth rate	non-behaviour
+egg length	non-behaviour
+egg number	non-behaviour
+egg pod length	non-behaviour
+body weight 270 days	non-behaviour
+carcasss backfat depth	non-behaviour
+carcass lean meat content	non-behaviour
+subcutaneous fat linoleic acid content	non-behaviour
+iodine number	non-behaviour
+ham subcutaneous fat depth (SFD1)	non-behaviour
+ham subcutaneous fat depth (SFD2)	non-behaviour
+round shape	non-behaviour
+subcutanous fat	non-behaviour
+marbling	non-behaviour
+body weight at r2	non-behaviour
+body weight at r3	non-behaviour
+specific growth rate	non-behaviour
+change in condition factor	non-behaviour
+first dorsal length at r1	non-behaviour
+first dorsal length at r2	non-behaviour
+first dorsal length at r3	non-behaviour
+second dorsal at r2	non-behaviour
+second dorsal at r3	non-behaviour
+third dorsal at r1	non-behaviour
+third dorsal at r2	non-behaviour
+third dorsal at r3	non-behaviour
+caudal fin length at r1	non-behaviour
+caudal fin length at r2	non-behaviour
+caudal fin length at r3	non-behaviour
+first dorsal erosion	non-behaviour
+second dorsal erosion	non-behaviour
+third dorsal erosion	non-behaviour
+caudal erosion	non-behaviour
+final body weight (BW)	non-behaviour
+backfat depth	non-behaviour
+longissimus muscle area (LM)	non-behaviour
 dyadic fights (fighting ability)	social behaviour
-old cone hoard size	non-social behaviour
-new cone hoard size	non-social behaviour
+average daily gain (ADG)	non-behaviour
+neck bite marks	assumed social behaviour
+body bite marks	assumed social behaviour
+tail bite marks	assumed social behaviour
+average daily weight	non-behaviour
 Performing feather pecks 6 weeks	social behaviour
 Performing bouts of feather pecks 6 weeks	social behaviour
 Performing feather pecks 38 weeks	social behaviour
 Performing bouts of feather pecks 38 weeks	social behaviour
 Performing feather pecks 69 weeks	social behaviour
 Performing bouts of feather pecks 69 weeks	social behaviour
+harvest live weight	non-behaviour
+average daily gain	non-behaviour
 Running duration - day 1	non-social behaviour
 Running duration - day 2	non-social behaviour
 Running duration - day 3	non-social behaviour
@@ -30,13 +68,80 @@ Running speed - day 3	non-social behaviour
 Running speed - day 4	non-social behaviour
 Running speed- day 5	non-social behaviour
 Running speed- day 6	non-social behaviour
+Running duration - day 1	non-social behaviour
+Running duration - day 2	non-social behaviour
+Running duration - day 3	non-social behaviour
+Running duration - day 4	non-social behaviour
+Running duration - day 5	non-social behaviour
+Running duration- day 6	non-social behaviour
+Running speed - day 1	non-social behaviour
+Running speed - day 2	non-social behaviour
+Running speed - day 3	non-social behaviour
+Running speed - day 4	non-social behaviour
+Running speed- day 5	non-social behaviour
+Running speed- day 6	non-social behaviour
+Aggression	social behaviour
+Aggression	social behaviour
+Aggression	social behaviour
+Aggression	social behaviour
+Aggression	social behaviour
+Aggression	social behaviour
+parturition date	non-behaviour
+average daily gain	non-behaviour
+approach rate	social behaviour
+naso-anal contact rate	social behaviour
+mounting rate	social behaviour
+rearing rate	social behaviour
+reciprocal latency to fight	social behaviour
+neck bite marks	assumed social behaviour
+tail bite marks	assumed social behaviour
+body bite marks	assumed social behaviour
+survival time	non-behaviour
+survival time	non-behaviour
+survival time	non-behaviour
+survival time	non-behaviour
+laying date	non-behaviour
+aggression	social behaviour
+average daily gain (ADG)	non-behaviour
+average daily gain (ADG)	non-behaviour
+Average daily gain week 1	non-behaviour
+Average daily gain week 2	non-behaviour
+Average daily gain week 3	non-behaviour
+Average daily gain week 4	non-behaviour
+Average daily gain week 5	non-behaviour
+average daily gain	non-behaviour
 Feather condition score	assumed social behaviour
-social dominance	social behaviour
-nesting site preference	non-social behaviour
+Feather condition score	assumed social behaviour
+survival days	non-behaviour
 neck feather condition score	assumed social behaviour
 back feather condition score	assumed social behaviour
 rump feather condition score	assumed social behaviour
 belly feather condition score	assumed social behaviour
-divorce	social behaviour
-Aggression	social behaviour
-Social dominance	social behaviour
+neck feather condition score	assumed social behaviour
+back feather condition score	assumed social behaviour
+rump feather condition score	assumed social behaviour
+belly feather condition score	assumed social behaviour
+Survival days (STM)	non-behaviour
+Survival days (STM)	non-behaviour
+Survival monthly (RMM.t)	non-behaviour
+Survival monthly (RMM.t)	non-behaviour
+average daily gain	non-behaviour
+oviposition post mating	non-behaviour
+copulation duration	non-behaviour
+parturition date	non-behaviour
+feeding rates	non-social behaviour
+survival days	non-behaviour
+survival days	non-behaviour
+survival days	non-behaviour
+growth rate	non-behaviour
+back fat thickness	non-behaviour
+muscle depth	non-behaviour
+feed intake	non-behaviour
+growth rate	non-behaviour
+average daily gain (ADG)	non-behaviour
+days to 100 kg (D100)	non-behaviour
+backfat thickness to 100kg (B100)	non-behaviour
+average daily feed intake (ADFI)	non-behaviour
+residual feed intake (RFI)	non-behaviour
+feed conversion ratio (FCR)	non-behaviour
+laying date	non-behaviour
