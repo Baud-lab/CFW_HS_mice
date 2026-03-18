@@ -42,66 +42,17 @@ caudal erosion	non-behaviour
 final body weight (BW)	non-behaviour
 backfat depth	non-behaviour
 longissimus muscle area (LM)	non-behaviour
-dyadic fights (fighting ability)	social behaviour
 average daily gain (ADG)	non-behaviour
-neck bite marks	assumed social behaviour
-body bite marks	assumed social behaviour
-tail bite marks	assumed social behaviour
 average daily weight	non-behaviour
-Performing feather pecks 6 weeks	social behaviour
-Performing bouts of feather pecks 6 weeks	social behaviour
-Performing feather pecks 38 weeks	social behaviour
-Performing bouts of feather pecks 38 weeks	social behaviour
-Performing feather pecks 69 weeks	social behaviour
-Performing bouts of feather pecks 69 weeks	social behaviour
 harvest live weight	non-behaviour
 average daily gain	non-behaviour
-Running duration - day 1	non-social behaviour
-Running duration - day 2	non-social behaviour
-Running duration - day 3	non-social behaviour
-Running duration - day 4	non-social behaviour
-Running duration - day 5	non-social behaviour
-Running duration- day 6	non-social behaviour
-Running speed - day 1	non-social behaviour
-Running speed - day 2	non-social behaviour
-Running speed - day 3	non-social behaviour
-Running speed - day 4	non-social behaviour
-Running speed- day 5	non-social behaviour
-Running speed- day 6	non-social behaviour
-Running duration - day 1	non-social behaviour
-Running duration - day 2	non-social behaviour
-Running duration - day 3	non-social behaviour
-Running duration - day 4	non-social behaviour
-Running duration - day 5	non-social behaviour
-Running duration- day 6	non-social behaviour
-Running speed - day 1	non-social behaviour
-Running speed - day 2	non-social behaviour
-Running speed - day 3	non-social behaviour
-Running speed - day 4	non-social behaviour
-Running speed- day 5	non-social behaviour
-Running speed- day 6	non-social behaviour
-Aggression	social behaviour
-Aggression	social behaviour
-Aggression	social behaviour
-Aggression	social behaviour
-Aggression	social behaviour
-Aggression	social behaviour
 parturition date	non-behaviour
 average daily gain	non-behaviour
-approach rate	social behaviour
-naso-anal contact rate	social behaviour
-mounting rate	social behaviour
-rearing rate	social behaviour
-reciprocal latency to fight	social behaviour
-neck bite marks	assumed social behaviour
-tail bite marks	assumed social behaviour
-body bite marks	assumed social behaviour
 survival time	non-behaviour
 survival time	non-behaviour
 survival time	non-behaviour
 survival time	non-behaviour
 laying date	non-behaviour
-aggression	social behaviour
 average daily gain (ADG)	non-behaviour
 average daily gain (ADG)	non-behaviour
 Average daily gain week 1	non-behaviour
@@ -110,17 +61,7 @@ Average daily gain week 3	non-behaviour
 Average daily gain week 4	non-behaviour
 Average daily gain week 5	non-behaviour
 average daily gain	non-behaviour
-Feather condition score	assumed social behaviour
-Feather condition score	assumed social behaviour
 survival days	non-behaviour
-neck feather condition score	assumed social behaviour
-back feather condition score	assumed social behaviour
-rump feather condition score	assumed social behaviour
-belly feather condition score	assumed social behaviour
-neck feather condition score	assumed social behaviour
-back feather condition score	assumed social behaviour
-rump feather condition score	assumed social behaviour
-belly feather condition score	assumed social behaviour
 Survival days (STM)	non-behaviour
 Survival days (STM)	non-behaviour
 Survival monthly (RMM.t)	non-behaviour
@@ -129,7 +70,6 @@ average daily gain	non-behaviour
 oviposition post mating	non-behaviour
 copulation duration	non-behaviour
 parturition date	non-behaviour
-feeding rates	non-social behaviour
 survival days	non-behaviour
 survival days	non-behaviour
 survival days	non-behaviour
@@ -145,3 +85,63 @@ average daily feed intake (ADFI)	non-behaviour
 residual feed intake (RFI)	non-behaviour
 feed conversion ratio (FCR)	non-behaviour
 laying date	non-behaviour
+Running duration - day 1	non-social behaviour
+Running duration - day 2	non-social behaviour
+Running duration - day 3	non-social behaviour
+Running duration - day 4	non-social behaviour
+Running duration - day 5	non-social behaviour
+Running duration- day 6	non-social behaviour
+Running speed - day 1	non-social behaviour
+Running speed - day 2	non-social behaviour
+Running speed - day 3	non-social behaviour
+Running speed - day 4	non-social behaviour
+Running speed- day 5	non-social behaviour
+Running speed- day 6	non-social behaviour
+Running duration - day 1	non-social behaviour
+Running duration - day 2	non-social behaviour
+Running duration - day 3	non-social behaviour
+Running duration - day 4	non-social behaviour
+Running duration - day 5	non-social behaviour
+Running duration- day 6	non-social behaviour
+Running speed - day 1	non-social behaviour
+Running speed - day 2	non-social behaviour
+Running speed - day 3	non-social behaviour
+Running speed - day 4	non-social behaviour
+Running speed- day 5	non-social behaviour
+Running speed- day 6	non-social behaviour
+feeding rates	non-social behaviour
+dyadic fights (fighting ability)	social behaviour
+Performing feather pecks 6 weeks	social behaviour
+Performing bouts of feather pecks 6 weeks	social behaviour
+Performing feather pecks 38 weeks	social behaviour
+Performing bouts of feather pecks 38 weeks	social behaviour
+Performing feather pecks 69 weeks	social behaviour
+Performing bouts of feather pecks 69 weeks	social behaviour
+Aggression	social behaviour
+Aggression	social behaviour
+Aggression	social behaviour
+Aggression	social behaviour
+Aggression	social behaviour
+Aggression	social behaviour
+approach rate	social behaviour
+naso-anal contact rate	social behaviour
+mounting rate	social behaviour
+rearing rate	social behaviour
+reciprocal latency to fight	social behaviour
+aggression	social behaviour
+neck bite marks	assumed social behaviour
+body bite marks	assumed social behaviour
+tail bite marks	assumed social behaviour
+neck bite marks	assumed social behaviour
+tail bite marks	assumed social behaviour
+body bite marks	assumed social behaviour
+Feather condition score	assumed social behaviour
+Feather condition score	assumed social behaviour
+neck feather condition score	assumed social behaviour
+back feather condition score	assumed social behaviour
+rump feather condition score	assumed social behaviour
+belly feather condition score	assumed social behaviour
+neck feather condition score	assumed social behaviour
+back feather condition score	assumed social behaviour
+rump feather condition score	assumed social behaviour
+belly feather condition score	assumed social behaviour

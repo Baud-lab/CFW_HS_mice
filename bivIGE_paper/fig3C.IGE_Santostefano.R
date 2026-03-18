@@ -98,7 +98,8 @@ at.dict = seq_along(lev); names(at.dict) = lev
 #coolors = sapply(at.dict, function(x) ifelse(x == 3 | x == 4, "#B894B1", "grey50"))
 
 # Save table for suppTable6
-write.table(data.frame("phenotype"= data.1A$Trait_name, "category" = gsub("\n"," ",data.1A$new_category)), "./plot/rev_Santostefano/suppTable6.tsv", sep = "\t", quote = F, row.names = F)
+supptable = data.1A[order(data.1A$new_category),c("Trait_name", "new_category")]
+write.table(data.frame("phenotype"= supptable$Trait_name, "category" = gsub("\n"," ",supptable$new_category)), "./plot/rev_Santostefano/suppTable6.tsv", sep = "\t", quote = F, row.names = F)
 
 pdf("./plot/rev_Santostefano/Fig3.IGE_beh_nonb.pdf", h=6, w=5)
 par(mar=c(6.1,4.6,3.1,6.6))
