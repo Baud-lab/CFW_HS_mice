@@ -2,39 +2,44 @@ suppressMessages(library("rhdf5"))
 suppressMessages(library("dendextend")) # used for clustering
 suppressMessages(library("here"))
 
-sourcefun= "./bivIGE_paper/Rfun/"
+sourcefun = "bivIGE_paper/Rfun"
 
 source(here(sourcefun, "select_col_VCsmat.R")) # `select_col`: function to select columns of a specific Variance component, for all phenotypes 
 
 # functions needed for my heatmap
 source(here(sourcefun, "corrplot_size.R")) # `corrplot_size`: function to get heatmap - based on corrplot and with option "size_vector" 
 source(here(sourcefun, "heatmapCore.R")) # `corrplot_legend`: function to get heatmap with size based on pvalue - using option "size_vector" - takes corrplot_size
-source(here(sourcefun, "cluster_for_heatmap.R")) # `` : functions to get clustering - to plot clustered heatmap 
+source(here(sourcefun, "cluster_for_heatmap.R")) # `cluster.mat`, `plot.tree` : functions to get clustering - to plot clustered heatmap 
 
 
 # To plot results for CFW mice
-## opt = list(pop="CFW", # population, I have CFW or HSmice
-##            # directory with bivariate estimates 
-##            biVCdir ="~/nf_PRJs/nf-CoreQuantGen/realdata/output/CFW/VD/bivariate/noBatch/pruned_dosages_include_DGE_IGE_cageEffect/",
-##            # file with macrophenotypes - needed with biVCdir
-##            macro="~/PRJs/CFW/output/dataset/macropheno_CFW.csv", 
-##            # dir where to save plot # can do default = "./"
-##            out="./plot/CFW/") 
+opt = list(pop="CFW", # population, I have CFW or HSmice
+           # directory with bivariate estimates 
+           biVCdir ="~/nf_PRJs/nf-CoreQuantGen/realdata/output/CFW/VD/bivariate/noBatch/pruned_dosages_include_DGE_IGE_cageEffect/",
+           # file with macrophenotypes - needed with biVCdir
+           macro="~/PRJs/CFW/output/dataset/macropheno_CFW.csv", 
+           # file with results from univariate
+           unires = "/users/abaud/htonnele/PRJs/CFW/output/VDreal_2310/univariate/noBatch_500/pruned_dosages_include_DGE_IGE_cageEffect_estNste.Rdata",
+           # dir where to save plot # can do default = "./"
+           out="./plot/CFW/") 
 
 # To plot results for HS mice
-opt = list(pop = "HSmice", # population
-           # directory with bivariate estimates 
-           biVCdir = "~/nf_PRJs/nf-CoreQuantGen/realdata/output/HSmice/VD/bivariate/data_bcNcovariates/Andres_kinship_None_DGE_IGE_cageEffect/",
-           # file with macrophenotypes - needed with biVCdir
-           macro = "~/PRJs/HSmice/output/dataset/macropheno_HSmice.csv", 
-           # dir where to save plot # can do default = "./"
-           out = "./plot/HSmice/") 
+## opt = list(pop = "HSmice", # population
+##            # directory with bivariate estimates 
+##            biVCdir = "~/nf_PRJs/nf-CoreQuantGen/realdata/output/HSmice/VD/bivariate/data_bcNcovariates/Andres_kinship_None_DGE_IGE_cageEffect/",
+##            # file with macrophenotypes - needed with biVCdir
+##            macro = "~/PRJs/HSmice/output/dataset/macropheno_HSmice.csv", 
+##            # file with results from univariate
+##            unires = "/users/abaud/htonnele/PRJs/HSmice/output/VDreal_2311/univariate/data_bcNcovariates_500/Andres_kinship_DGE_IGE_cageEffect_estNste.Rdata",
+##            # dir where to save plot # can do default = "./"
+##            out = "./plot/HSmice/") 
 
 
 # 0. Storing options ---------
 pop = opt$pop 
 bi_est_dir = opt$biVCdir
 macro_file = opt$macro
+unires = opt$unires
 coroi = "corr_Ad2s1"
 pval_type = "LRT"
 adj_toplot = "fdr"
@@ -44,7 +49,7 @@ files = list.files(bi_est_dir, pattern = "_estNste.Rdata")
 
 # 1. Parsing data ---------
 stopifnot(length(files) > 0)
-resVCs <- lapply(files, function(f) {
+resVCs = lapply(files, function(f) {
   load(file.path(bi_est_dir,f))
   cat("doing file ", f, "\n")
   if(exists("res")){ 
@@ -86,7 +91,7 @@ macropheno = setNames( ormacro$phenotype_ID, ormacro$macrophenotype)
 
 ### specific CFW
 if (pop =="CFW"){
-  replacements <- c("Adrenals" = "AdrenalWeight", 
+  replacements = c("Adrenals" = "AdrenalWeight", 
                     "Bioch" = "Biochemistry", 
                     "WH" = "EarPunch",
                     "Haem" = "Haematology", 
@@ -106,7 +111,7 @@ if (length( unique(resRows) ) > 1){
 sapply(resVCs, function(x) all(rownames(x) == rownames(resVCs[[1]])) )
 
 # Adding corresponding macropheno 1 and macropheno 2
-resVCs <- lapply(resVCs, function(VCs){
+resVCs = lapply(resVCs, function(VCs){
   mt = match(VCs[,"trait1"], macropheno)
   VCs[,"macro1"] = names(macropheno)[mt]
   mt2 = match(VCs[,"trait2"], macropheno)
@@ -130,7 +135,7 @@ if (length( unique(resRows) ) > 1){
 sapply(resVCs, function(x) all(rownames(x) == rownames(resVCs[[1]])) )
 
 # Adding corresponding category 1 and category 2
-resVCs <- lapply(resVCs, function(VCs){
+resVCs = lapply(resVCs, function(VCs){
   mt = match(VCs[,"trait1"], category)
   VCs[,"category1"] = names(category)[mt]
   mt2 = match(VCs[,"trait2"], category)
@@ -186,9 +191,9 @@ colnames(p_nom) = gsub("pv_chi2dof1",coroi,colnames(p_nom))
 cat("Calculating FDR on the full matrix\n")
 pval_flat = c(as.matrix(p_nom))
 ## Adjust as a vector 
-p_adj.2 <- p.adjust(pval_flat, method = "fdr")
+p_adj.2 = p.adjust(pval_flat, method = "fdr")
 ## Reshape the adjusted p-values back into a matrix
-p_adj.2mx <- matrix(p_adj.2, nrow = nrow(p_nom), dimnames = dimnames(p_nom))
+p_adj.2mx = matrix(p_adj.2, nrow = nrow(p_nom), dimnames = dimnames(p_nom))
 
 p_fdr = p_adj.2mx
 
@@ -197,8 +202,8 @@ stopifnot(all.equal(rownames(p_nom), rownames(p_fdr)),
 
 
 #  Extracting the matrix for the corr of interest
-cor_mat <- select_col(VCs.mat, coroi) 
-se_mat <- select_col(VCs.mat, ste_oi) 
+cor_mat = select_col(VCs.mat, coroi) 
+se_mat = select_col(VCs.mat, ste_oi) 
 stopifnot(all(rownames(cor_mat) == rownames(se_mat)), 
           all(gsub("corr_","",colnames(cor_mat)) == gsub("STE_", "", colnames(se_mat))))
 # plot(unlist(as.vector(cor_mat)), unlist(as.vector(se_mat))) # checking that there is no correlation between corr value and ste value
@@ -251,28 +256,28 @@ col_ord = tree_col$order
 ## Reordering for HS mice
 if(pop=="HSmice"){
   # Convert row tree to dendrogram
-  dend_row <- as.dendrogram(tree_row)
+  dend_row = as.dendrogram(tree_row)
   #par(mar=c(10.1,4.1,4.1,2.1))
   #nodePar = list(lab.cex = 0.5, pch=c(NA,NA))
   #plot(dend_row, nodePar = nodePar)
   # Reorder rows 
-  dend_row[[2]][[2]] <-  rev(dend_row[[2]][[2]])
-  dend_row[[2]][[2]][[1]] <-  rev(dend_row[[2]][[2]][[1]])
-  dend_row[[2]][[2]][[1]][[2]][[1]] <-  rev(dend_row[[2]][[2]][[1]][[2]][[1]])
+  dend_row[[2]][[2]] =  rev(dend_row[[2]][[2]])
+  dend_row[[2]][[2]][[1]] =  rev(dend_row[[2]][[2]][[1]])
+  dend_row[[2]][[2]][[1]][[2]][[1]] =  rev(dend_row[[2]][[2]][[1]][[2]][[1]])
   
   row_ord = order.dendrogram(dend_row)
   # saving new row tree
   tree_row = as.hclust(dend_row)
   
   # Convert col tree to dendrogram
-  dend_col <- as.dendrogram(tree_col)
+  dend_col = as.dendrogram(tree_col)
   #plot(dend_col, nodePar = nodePar)
   # Reorder cols 
-  dend_col[[2]][[2]] <-  rev(dend_col[[2]][[2]])
-  dend_col[[2]][[2]][[1]][[1]][[1]][[2]] <- rev(dend_col[[2]][[2]][[1]][[1]][[1]][[2]])
-  dend_col[[2]][[2]][[1]][[2]] <- rev(dend_col[[2]][[2]][[1]][[2]])
-  dend_col[[2]][[1]] <- rev(dend_col[[2]][[1]])
-  dend_col[[2]][[1]][[2]] <- rev(dend_col[[2]][[1]][[2]])
+  dend_col[[2]][[2]] =  rev(dend_col[[2]][[2]])
+  dend_col[[2]][[2]][[1]][[1]][[1]][[2]] = rev(dend_col[[2]][[2]][[1]][[1]][[1]][[2]])
+  dend_col[[2]][[2]][[1]][[2]] = rev(dend_col[[2]][[2]][[1]][[2]])
+  dend_col[[2]][[1]] = rev(dend_col[[2]][[1]])
+  dend_col[[2]][[1]][[2]] = rev(dend_col[[2]][[1]][[2]])
   
   col_ord = order.dendrogram(dend_col)
   # saving new col tree
@@ -280,37 +285,37 @@ if(pop=="HSmice"){
   
 }else if(pop == "CFW"){
   # Convert row tree to dendrogram
-  dend_row <- as.dendrogram(tree_row)
+  dend_row = as.dendrogram(tree_row)
   # Reorder rows
-  #dend_row[[1]] <- rev(dend_row[[1]])
-  dend_row[[1]][[1]][[2]] <- rev(dend_row[[1]][[1]][[2]])
-  dend_row[[1]][[1]][[2]][[1]] <- rev(dend_row[[1]][[1]][[2]][[1]])
-  dend_row[[1]][[1]][[2]][[1]][[2]] <- rev(dend_row[[1]][[1]][[2]][[1]][[2]] )
-  dend_row[[1]][[2]] <- rev(dend_row[[1]][[2]])
-  dend_row[[2]] <- rev(dend_row[[2]])
-  dend_row[[2]][[1]] <- rev(dend_row[[2]][[1]])
-  dend_row[[2]][[1]][[2]][[1]] <- rev(dend_row[[2]][[1]][[2]][[1]])
-  dend_row[[2]][[1]][[2]][[1]][[1]] <- rev(dend_row[[2]][[1]][[2]][[1]][[1]])
-  dend_row[[2]][[2]] <- rev(dend_row[[2]][[2]])
+  #dend_row[[1]] = rev(dend_row[[1]])
+  dend_row[[1]][[1]][[2]] = rev(dend_row[[1]][[1]][[2]])
+  dend_row[[1]][[1]][[2]][[1]] = rev(dend_row[[1]][[1]][[2]][[1]])
+  dend_row[[1]][[1]][[2]][[1]][[2]] = rev(dend_row[[1]][[1]][[2]][[1]][[2]] )
+  dend_row[[1]][[2]] = rev(dend_row[[1]][[2]])
+  dend_row[[2]] = rev(dend_row[[2]])
+  dend_row[[2]][[1]] = rev(dend_row[[2]][[1]])
+  dend_row[[2]][[1]][[2]][[1]] = rev(dend_row[[2]][[1]][[2]][[1]])
+  dend_row[[2]][[1]][[2]][[1]][[1]] = rev(dend_row[[2]][[1]][[2]][[1]][[1]])
+  dend_row[[2]][[2]] = rev(dend_row[[2]][[2]])
   
   row_ord = order.dendrogram(dend_row)
   # saving new row tree
   tree_row = as.hclust(dend_row)
   
   # Convert col tree to dendrogram
-  dend_col <- as.dendrogram(tree_col)
+  dend_col = as.dendrogram(tree_col)
   # Reorder
-  dend_col <- rev(dend_col)
-  dend_col[[1]] <- rev(dend_col[[1]])
-  dend_col[[1]][[2]][[2]] <- rev(dend_col[[1]][[2]][[2]])
-  dend_col[[1]][[2]][[2]][[1]] <- rev(dend_col[[1]][[2]][[2]][[1]])
-  dend_col[[2]][[2]] <- rev(dend_col[[2]][[2]])
-  dend_col[[2]][[2]][[1]][[2]] <- rev(dend_col[[2]][[2]][[1]][[2]])
-  dend_col[[2]][[2]][[1]][[2]][[1]] <- rev(dend_col[[2]][[2]][[1]][[2]][[1]])
-  dend_col[[2]][[2]][[1]][[2]][[1]][[2]] <- rev(dend_col[[2]][[2]][[1]][[2]][[1]][[2]])
-  dend_col[[2]][[2]][[2]][[1]][[1]] <- rev(dend_col[[2]][[2]][[2]][[1]][[1]])
-  dend_col[[2]][[2]][[2]][[1]][[1]][[1]] <- rev(dend_col[[2]][[2]][[2]][[1]][[1]][[1]])
-  dend_col[[2]][[2]][[2]][[1]][[1]][[1]][[2]][[2]] <- rev(dend_col[[2]][[2]][[2]][[1]][[1]][[1]][[2]][[2]])
+  dend_col = rev(dend_col)
+  dend_col[[1]] = rev(dend_col[[1]])
+  dend_col[[1]][[2]][[2]] = rev(dend_col[[1]][[2]][[2]])
+  dend_col[[1]][[2]][[2]][[1]] = rev(dend_col[[1]][[2]][[2]][[1]])
+  dend_col[[2]][[2]] = rev(dend_col[[2]][[2]])
+  dend_col[[2]][[2]][[1]][[2]] = rev(dend_col[[2]][[2]][[1]][[2]])
+  dend_col[[2]][[2]][[1]][[2]][[1]] = rev(dend_col[[2]][[2]][[1]][[2]][[1]])
+  dend_col[[2]][[2]][[1]][[2]][[1]][[2]] = rev(dend_col[[2]][[2]][[1]][[2]][[1]][[2]])
+  dend_col[[2]][[2]][[2]][[1]][[1]] = rev(dend_col[[2]][[2]][[2]][[1]][[1]])
+  dend_col[[2]][[2]][[2]][[1]][[1]][[1]] = rev(dend_col[[2]][[2]][[2]][[1]][[1]][[1]])
+  dend_col[[2]][[2]][[2]][[1]][[1]][[1]][[2]][[2]] = rev(dend_col[[2]][[2]][[2]][[1]][[1]][[1]][[2]][[2]])
   
   col_ord = order.dendrogram(dend_col)
   # saving new col tree
@@ -362,3 +367,111 @@ plot.tree(tree_col, k = k, subtitle= "tree cols - DGE2", mycolors, cex = 0.5)
 plot.tree(tree_row, k = k, subtitle= "tree rows - IGE1", rev(mycolors), cex = 0.8)
 
 dev.off()
+
+
+# C. boxplots IGE-DGE correlations of self trait (corr_Ad1s1 for phenotypes-IGE or corr_Ad2s2 for phenotypes-DGE) --------
+corr_Ad1s1 = select_col(VCs.mat, "corr_Ad1s1")
+colnames(corr_Ad1s1) = sub(".corr_Ad1s1","",colnames(corr_Ad1s1))
+ste_Ad1s1 = select_col(VCs.mat, "STE_Ad1s1")
+colnames(ste_Ad1s1) = sub(".STE_Ad1s1","",colnames(ste_Ad1s1))
+
+corr_Ad2s2 = select_col(VCs.mat, "corr_Ad2s2")
+colnames(corr_Ad2s2) = sub(".corr_Ad2s2","",colnames(corr_Ad2s2))
+ste_Ad2s2 = select_col(VCs.mat, "STE_Ad2s2")
+colnames(ste_Ad2s2) = sub(".STE_Ad2s2","",colnames(ste_Ad2s2))
+
+# Loading uni results
+obj = load(unires) # loads uni_VCs
+rownames(uni_VCs) = uni_VCs$trait1
+uni_corr = setNames(uni_VCs$corr_Ad1s1, rownames(uni_VCs))
+uni_ste = setNames(uni_VCs$STE_Ad1s1, rownames(uni_VCs))
+
+# 1. plot correlations of self trait as heatmap
+if(pop=="HSmice"){
+  tl.cex = 1.4
+}else if(pop=="CFW"){
+  tl.cex = 1.2
+}
+
+outpdf = file.path(outDir, paste0("Fig5b.corr_self_heatmap.pdf")); cat("saving plot in ", outpdf, "\n")
+h = 12; w = 30 
+pdf(outpdf, h=h, w =w)
+# phenotypes-IGE
+corrplot_unsized(as.matrix(uni_corr[colnames(corr_Ad1s1[,row_ord])]), 
+                 methad="circle", tl.cex = tl.cex)
+
+# phenotypes-DGE
+corrplot_unsized(t(as.matrix(uni_corr[rownames(corr_Ad1s1[col_ord,])])), 
+                 methad="circle", tl.cex = tl.cex)
+dev.off()
+
+# 2. plot correlations of self trait in bivariate and univariate
+plot_corrs = function(corr_mat, pheno_type, uni_VCs, uni_corr, uni_ste, unicolor = c("darkblue", "red"), arrowcol="grey30"){
+  if(pheno_type == "IGE"){
+    tmp = setNames(uni_VCs[colnames(corr_mat), "prop_Ad1"], rownames(uni_VCs[colnames(corr_mat),]))
+    all(names(tmp) == colnames(corr_mat))
+    
+    coolors = setNames(rep(unicolor[1], length(tmp)), names(tmp))
+    coolors[tmp < 0.05] = unicolor[2]
+
+    hor = T
+    n = ncol(corr_mat)
+    xlimi = c(n+0.5, 0.5)
+    las = 1
+    
+    dot_corr = uni_corr[names(tmp)]
+    dot_names = seq_along(names(tmp))
+    seg = uni_ste[names(tmp)]
+    
+  }else if(pheno_type == "DGE"){
+    tmp = setNames(uni_VCs[rownames(corr_mat), "prop_As1"], rownames(uni_VCs[rownames(corr_mat),]))
+    all(names(tmp) == rownames(corr_mat))
+    
+    coolors = setNames(rep(unicolor[1], length(tmp)), names(tmp))
+    coolors[tmp < 0.05] = unicolor[2]
+    
+    corr_mat = t(corr_mat)
+    hor = F
+    n = ncol(corr_mat)
+    xlimi = c(0, n)
+    las = 2
+    
+    dot_names = seq_along(names(tmp))
+    dot_corr = uni_corr[names(tmp)]
+    seg = uni_ste[names(tmp)]
+  }
+  boxplot(corr_mat, horizontal = hor,
+          #yaxt = F, xaxt = F,
+          names = colnames(corr_mat), xlim = xlimi, ylim = c(-1,1),
+          cex = 0.8, col = adjustcolor(coolors, alpha.f = 0.2), border = coolors,
+          xlab = paste0("phenotype-", pheno_type), ylab = "corr(DGE trait A, IGE trait A)", 
+          las = las, cex.axis = 0.5,
+          main = "")
+  if(pheno_type == "IGE"){
+    points(x = dot_corr, y = dot_names, col = arrowcol, pch = 15, cex = 0.8)
+    arrows(x0 = dot_corr - seg, x1 = dot_corr + seg, 
+           y0 = dot_names, y1 = dot_names, 
+           code = 0, col = arrowcol, lty = 3)
+  }else if(pheno_type == "DGE"){
+    points(x = dot_names, y = dot_corr, col = arrowcol, pch = 15, cex = 0.8)
+    arrows(x0 = dot_names, x1 = dot_names, 
+           y0 = dot_corr - seg, y1 = dot_corr + seg, 
+           code = 0, col = arrowcol, lty = 3)
+  }
+  return(list=c(corr_uni = dot_corr, ste_uni = seg))
+}
+
+outpdf = file.path(outDir, paste0("Fig5c.box_corr_selfpheno_IGE.pdf")); cat("saving plot in ", outpdf, "\n")
+h = 7; w = 5
+pdf(outpdf, h=h, w =w)
+par(mar = c(5.1,8.1,4.1,1.1))
+plot_corrs(corr_Ad1s1[col_ord, row_ord], pheno_type = "IGE", uni_VCs, uni_corr, uni_ste, unicolor = c("#724e94", "#724e94"))
+dev.off()
+
+outpdf = file.path(outDir, paste0("Fig5c.box_corr_selfpheno_DGE.pdf")); cat("saving plot in ", outpdf, "\n")
+h = 5; w = 12
+pdf(outpdf, h=h, w =w)
+par(mar = c(8.1,4.1,1.1,1.1))
+plot_corrs(corr_Ad2s2[col_ord, row_ord], pheno_type = "DGE", uni_VCs, uni_corr, uni_ste, unicolor = c("#724e94", "#724e94"))
+dev.off()
+
