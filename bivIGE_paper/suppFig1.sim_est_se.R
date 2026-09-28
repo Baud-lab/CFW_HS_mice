@@ -1,14 +1,15 @@
-library("here")
-sourcefun = "./bivIGE_paper/Rfun" 
-source(here(sourcefun, "plot_sim.R"))
+library("rsimsum")
+
+sourcefun = "./Rfun" 
+source(file.path(sourcefun, "plot_sim.R"))
 
 # To plot HS mice use these lines 
-#opt=list(infile = "~/nf_PRJs/nf-CoreQuantGen/simulations/output/simHSmice/toPlot/toPlot_bi_0.1_s20.Rdata",
+#opt=list(infile = "./data/HSmice/simulations/bivariate/set0_DG2_IG1_0.1_s30_toPlot.Rdata",
 #         outdir = "./plot/HSmice/"
 #         )
 
 # To plot CFW mice use these lines 
-opt=list(infile="~/nf_PRJs/nf-CoreQuantGen/simulations/output/simCFW/toPlot/toPlot_bi_0.1_s30_2406.Rdata",
+opt=list(infile="./data/CFW/simulations/bivariate/set0_DG2_IG1_0.1_s30_toPlot.Rdata",
          outdir= "./plot/CFW/"
 )
 ylimi = c(-0.35,0.35) # y-limits for estimates plot
@@ -20,7 +21,7 @@ grip = "A"
 eff = "GEN"
 
 #### 2. Loading objects ------
-# Loading list of objects saved from 4.simRes_toPlot.R and storing in respective variables
+# Loading list of objects and storing in respective variables
 load(toplot_file)
 
 # Loading names 
@@ -119,7 +120,6 @@ nemo=dev.off()
 
 
 # Plot coverage probability
-library("rsimsum")
 out_file=file.path(out_dir, "SFig1.sim_covProb.pdf")
 pdf(out_file, h = 7, w = 12) 
 par(mar = c(4, 8, 3, 2), mfrow=c(1,2))  # Margins: (bottom, left, top, right)
@@ -169,7 +169,6 @@ plot_performance = function(perf, main){
   plot(NULL, xlim = xlimi,
        ylim = c(0.5, length(y_positions) + 0.5),
        xlab = "", ylab = "", yaxt = "n", 
-       #main = "Bias", font.main = 2)
        main = main, font.main = 2)
   
   # Add y-axis labels
@@ -186,20 +185,10 @@ plot_performance = function(perf, main){
   
   # Add confidence intervals and lollipop elements
   for (i in 1:length(y_positions)) {
-    # Horizontal line for confidence interval (thinner, gray line)
-    #lines(c(lower_ci[i], upper_ci[i]), c(y_positions[i], y_positions[i]), 
-    #      col = "gray50", lwd = 0.8)
-    
+
     # Parentheses for confidence interval
     text(lower_ci[i], y_positions[i], "[", col = "gray50", pos = 2, offset=0)
     text(upper_ci[i], y_positions[i], "]", col = "gray50", pos = 4, offset=0)
-    
-    # Parentheses for 5% of estimate
-    #if(perf=="bias"){
-    #  text(lower_5p[i], y_positions[i], "(", col = "darkred", pos = 2, offset=0)
-    #  text(upper_5p[i], y_positions[i], ")", col = "darkred", pos = 4, offset=0)
-    #  
-    #}
     
     # Lollipop stem: line from 0 or 0.95 to the estimate
     if (perf=="bias"){
@@ -220,6 +209,5 @@ plot_performance = function(perf, main){
 }
 
 plot_performance("cover", "coverage probability")
-#plot_performance("bias", "bias")
 dev.off()
 
