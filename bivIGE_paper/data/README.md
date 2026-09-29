@@ -1,4 +1,4 @@
-# Data results from bivariate analysis to understand the mechanism of indirect genetic effects
+# Data from bivariate analysis to understand the mechanism of indirect genetic effects
 
 In each population folder (`CFW` and `HSmice`) there are:
 
