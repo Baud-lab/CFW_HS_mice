@@ -3,7 +3,7 @@
   + `realdata`: 
       + copy the params file for the analysis that want to run to `nf-realdata/params`
       (change output dir as wanted)
-      + copy `../data/*/dataset/` to `nf-realdata/input/`
+      + copy `../data/*/dataset/*` to `nf-realdata/input/`
   + `simulations`:
       + copy the params file for the simulations that want to run to `nf-simulations/params`
   + `simvc`:
