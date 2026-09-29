@@ -1,0 +1,21 @@
+##### input files 
+input:      "./input/CFW/dataset/CFWmice.h5" 
+combinDir:  "./input/CFW/dataset/combins/traitDGE_traitIGE/" 
+phenos:     ""  # regex selecting combins files for phenotype IGE to analyse, leave empty for all
+##### output folder 
+outdir:         "./output/CFW/"   # this is where results are published
+
+###### PARAMS for analysis
+bitime:     "1.h"
+vdMODEL:    "bi" 
+PHENOV:     "noBatch"
+COVSV:      "noBatch" 
+CAGEV:      "all623"
+DAMV:       "None"
+GRMV:       "pruned_dosages"
+SUBSET:     "include" 
+EFFECTS:    "DGE,IGE,cageEffect" 
+CORR_NULL:  "corr_Ad1s2,0"
+
+###### PARAMS for collecting files 
+SWAPtraits: "TRUE" # true when want to swap T1 and T2

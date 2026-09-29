@@ -1,0 +1,23 @@
+##### input files 
+input:      "./input/CFW/dataset/CFWmice.h5" 
+combinDir:  "" 
+phenos:     170  # Total number of phenotypes to analyse 
+##### output folder 
+outdir:         "./output/CFW"                 # this is where results are published
+pipeline_info:  "./output/CFW/pipeline_info/"  # this is where to store pipeline info
+
+###### PARAMS for analysis
+vdMODEL:    "uni" 
+PHENOV:     "noBatch"
+COVSV:      "noBatch" 
+CAGEV:      "all623"
+DAMV:       "None"
+GRMV:       "pruned_dosages"
+SUBSET:     "include" 
+EFFECTS:    "DGE,IGE,cageEffect" 
+CORR_NULL:  "None"
+
+###### PARAMS for collecting files 
+SWAPtraits: "FALSE" # true when want to swap T1 and T2
+
+# NB: to reproduce exact results from paper need to hard set the seed=500 in covRunner.py

@@ -1,0 +1,30 @@
+###### SKIP SIMULATIONS - only analysis
+skip_simulations: false
+
+###### INPUT/OUTPUT FILES
+original_H5:      "./input/dataset/CFWmice.h5"
+original_params:  "./input/vc/start_params_set0.csv" 
+output_folder:    "./output/simCFW/"
+
+###### PARAMS FOR SIMULATIONS
+SIT:      "0" 
+POP:      "CFW"
+P:        "DEE2"
+V:        ["0.44", "2.2"] 
+SEED:     [20] 
+simMODEL: "bi"
+NPHENO:   1000 
+NCAGES:   623 
+NAs:      0 
+GRMV:     "pruned_dosages"
+CAGEV:    "all623" 
+DAMV:     "None"
+
+###### PARAMS for analysis
+vdMODEL:  "bi" 
+PHENOV:   "mockphenos" 
+COVSV:    "None" 
+EFFECTS:  "DGE,IGE,IEE,cageEffect"
+CORR_NULL: "None"       # correlation to constrain comma-sep with the value to constrain, can be 0 or 1 - e.g. "corr_Ad1s2,0" or "corr_As1s2,1"
+PERM:      "no"         # 'yes' or 'no' for scrambling cages to test IGE is not random with permutations
+CACHE_VD:  true         # if set to false, run_VD is run again, useful when the set of simulations is run already and want to analyse the same phenotypes again (e.g. while scrambling cages) 

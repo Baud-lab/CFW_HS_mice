@@ -6,6 +6,8 @@ In each population folder (`CFW` and `HSmice`) there are:
   + h5 file: storing all information for VD analysis (genotypes, phenotypes, 
   covariates, cages) 
   + file: with information on macrophenotype and category for all phenotypes
+  + `combins`: directories with combins files (files with pairs of phenotypes to
+  analyse)
   
 + `permuations`: 
   + results from VD analysis of the most significant pair of phenotypes while scrambling 
@@ -16,7 +18,9 @@ In each population folder (`CFW` and `HSmice`) there are:
   + results from VD analysis of simulations `bivariate` and `sexvariate`
 
 + `VD`:
-  + results from VD analysis on real data 
+  + results from VD analysis on real pairs of phenotypes with IGE > 0.05 and 
+  DGE > 0.05
+
 
 
 
