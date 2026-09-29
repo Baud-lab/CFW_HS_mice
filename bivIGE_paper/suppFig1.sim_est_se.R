@@ -1,3 +1,11 @@
+##################################################################
+############       Script to plot Supp Fig. 1      ###############
+# Plot results of simulations for bivariate analysis             #
+# simulation estimates vs simulated values                       #
+# standard errors vs empirical standard errors (= sd(estimates)) #
+# coverage probability                                           #
+##################################################################
+
 library("rsimsum")
 
 sourcefun = "./Rfun" 

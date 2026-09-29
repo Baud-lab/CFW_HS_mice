@@ -1,3 +1,10 @@
+###########################################################
+############  Script to plot Supp Fig. 8   ################
+# Plot phenotypic correlation averaged over cage mates vs #
+# IGE-DGE correlation                                     #
+# Plot phenotypic correlation vs DGE-DGE correlation      #
+###########################################################
+
 # Libraries for phenotypic correlation
 suppressMessages(library("Hmisc"))
 suppressMessages(library("rhdf5"))
@@ -5,7 +12,7 @@ suppressMessages(library("rhdf5"))
 sourcefun = "./Rfun/"
 source(file.path(sourcefun, "select_col_VCsmat.R")) # `select_col`: function to select columns of a specific Variance component, for all phenotypes 
 
-# Corr_Ads estimated in univar vs corr_Ad1s1 or corr_Ad2s2 estimated in bivar
+# To plot CFW - comment lines for HS mice
 pop = "CFW mice"
 bi_est_dir = "./data/CFW/VD/bivariate/noBatch_pruned_dosages_include_DGE_IGE_cageEffect/"
 macro_file = "./data/CFW/dataset/macropheno_CFW.csv"
@@ -15,6 +22,7 @@ cageV = "all623"
 outplot = "./plot/CFW/SFig8.phenot_vs_gen_corr.pdf"
 pthr = 0.00031 # threshold of nominal p-value based on FDR < 0.1
 
+# To plot HSmice - comment lines for CFW
 ## pop = "HS mice"
 ## bi_est_dir = "./data/HSmice/VD/bivariate/data_bcNcovariates_Andres_kinship_None_DGE_IGE_cageEffect/"
 ## macro_file = "./data/HSmice/dataset/macropheno_HSmice.csv"

@@ -1,12 +1,19 @@
-### plot simulations with increasing DEE2
+#############################################################
+############  Script to plot Supp Fig. 6   ##################
+# Plot simulations with increasing DEE2 (only CFW)          #
+# set: "0.1" - initial set of simulations - plotted in fig. 1
+# set: "0.44" - new set with DEE2 x2                        #
+# set: "2.2" - new set with DEE2 x5                         #
+#############################################################
+
 sets = c("0.1" = "./data/CFW/simulations/bivariate/set0_DG2_IG1_0.1_s30_estNste.Rdata", 
          "0.44" = "./data/CFW/simulations/bivariate/set0_DEE2_0.44_s20_estNste.Rdata", 
          "2.2" = "./data/CFW/simulations/bivariate/set0_DEE2_2.2_s20_estNste.Rdata"
   
 )
-simfiles = c("0.1" = "./data/CFW/simulations/bivariate/params_bi_V0.1_S30.txt",
-             "0.44" = "./data/CFW/simulations/bivariate/params_bi_V0.44_S20.txt",
-             "2.2" = "./data/CFW/simulations/bivariate/params_bi_V2.2_S20.txt"
+simfiles = c("0.1" = "./data/CFW/simulations/params/params_bi_V0.1_S30.txt",
+             "0.44" = "./data/CFW/simulations/params/params_bi_V0.44_S20.txt",
+             "2.2" = "./data/CFW/simulations/params/params_bi_V2.2_S20.txt"
 )
 
 outpdf = "./plot/CFW/SFig6.simulations_noise.pdf"

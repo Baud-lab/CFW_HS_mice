@@ -1,4 +1,9 @@
-### Figure with DGE - IGE - cor(DGE,IGE) - se(corDGE,IGE) 
+###########################################################
+############  Script to plot Supp Fig. 4   ################
+# Plot to compare IGE-DGE correlations and their standard #
+# errors in the two datasets                              #
+###########################################################
+
 #   for HS mice and CFW mice
 CFW_file = "./data/CFW/VD/bivariate/noBatch_pruned_dosages_include_DGE_IGE_cageEffect_corrAd1s2_alt_all.txt"
 HS_file = "./data/HSmice/VD/bivariate/data_bcNcovariates_Andres_kinship_None_DGE_IGE_cageEffect_corr_Ad1s2_alt_all.txt"

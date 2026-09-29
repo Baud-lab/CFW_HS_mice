@@ -1,3 +1,8 @@
+#######################################################################
+############# Script to plot Figure 4 and Supp Fig. 7 #################
+# heatmaps of IGE-DGE correlations clustered by significance (Fig. 4) #
+#######################################################################
+
 suppressMessages(library("rhdf5"))
 suppressMessages(library("dendextend")) # used for clustering
 suppressMessages(library("ggsci"))      #used to plot trees 

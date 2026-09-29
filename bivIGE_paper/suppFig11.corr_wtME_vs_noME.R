@@ -1,4 +1,9 @@
-# plot correlations estimated with maternal vs without maternal effects
+######################################################
+##########   Script to plot Supp Fig. 11  ############
+# Plot IGE- DGE correlations estimated with maternal #
+# vs without maternal effects in HS mice             #
+######################################################
+
 
 est_wME = "./data/HSmice/VD/bivariate/data_bcNcovariates_Andres_kinship_None_DGE_IGE_cageEffect_maternalEffect_corr_Ad1s2_alt_all.txt"
 est_noME = "./data/HSmice/VD/bivariate/data_bcNcovariates_Andres_kinship_None_DGE_IGE_cageEffect_corr_Ad1s2_alt_all.txt"

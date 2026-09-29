@@ -1,4 +1,11 @@
-## plot results of simulations for sexvariate analysis
+##################################################################
+################   Script to plot Supp Fig. 9    #################
+# Plot results of simulations for sexvariate analysis            #
+# simulation estimates vs simulated values                       #
+# standard errors vs empirical standard errors (= sd(estimates)) #
+# coverage probability                                           #
+##################################################################
+
 library("rsimsum") # to plot coverage probability (and bias)
 
 sourcefun = "./Rfun" 
@@ -6,12 +13,12 @@ source(file.path(sourcefun, "plot_sim.R"))
 
 # To plot CFW results
 inrdata = "./data/CFW/simulations/sexvariate/mfphenos_set0_DG2_IG1_0.1_s30_estNste.Rdata"
-simP_file = "./data/CFW/simulations/bivariate/params_bi_V0.1_S30.txt"
+simP_file = "./data/CFW/simulations/params/params_bi_V0.1_S30.txt"
 outfile = "./plot/CFW/SFig9.sim_sexvar_est_se_covProb.pdf"
 
 ## # To plot HSmice results
 ## inrdata = "./data/HSmice/simulations/sexvariate/mfphenos_set0_DG2_IG1_0.1_s30_estNste.Rdata"
-## simP_file = "./data/HSmice/simulations/bivariate/params_bi_V0.1_S30.txt"
+## simP_file = "./data/HSmice/simulations/params/params_bi_V0.1_S30.txt"
 ## outfile = "./plot/HSmice/SFig9.sim_sexvar_est_se_covProb.pdf"
 
 ylimi = c(-0.85, 0.59) # this is to have the same axis for the two populations

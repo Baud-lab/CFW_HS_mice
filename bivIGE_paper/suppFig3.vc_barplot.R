@@ -1,5 +1,8 @@
+#############################################################
+############  Script to plot Supp Fig. 3   ##################
+# Plot to compare magnitude DGE and IGE in the two datasets #
+#############################################################
 
-# Plot to compare magnitude DGE and IGE on the two datasets
 maxbr=0.7
 
 prop = "absolute"; ylabi = "number of traits"

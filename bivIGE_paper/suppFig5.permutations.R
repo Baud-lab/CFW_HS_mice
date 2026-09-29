@@ -1,6 +1,7 @@
-## 1. SCRAMBLED TWO PAIRS OF REALDATA in HS and CFW mice
-#     (univariate and bivariate - plot only bivariate?)
-#     plus analysed DGE only
+#######################################################################
+##################  Script to plot Supp Fig. 5   ######################
+# Plot estimates from scrambling cage mates assignment (permutations) #
+#######################################################################
 
 ## input output
 fullfileHS = "./input/HSmice/VD/bivariate/data_bcNcovariates_Andres_kinship_None_DGE_IGE_cageEffect_corr_Ad1s2_alt_all.txt"

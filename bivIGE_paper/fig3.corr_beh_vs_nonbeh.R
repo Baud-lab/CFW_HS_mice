@@ -1,3 +1,8 @@
+##############################################
+########## Script to plot Figure 3. ##########
+# comparing IGE-DGE correlations between     #
+# behavioural and non-behavioural phenotypes #
+##############################################
 
 ### HSmice - comment lines for CFW ####
 pop = "HSmice"; pop_main = "HS mice"

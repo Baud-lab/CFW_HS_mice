@@ -1,10 +1,15 @@
-# Plot qqplot to check p-value calibration in sexvariate analysis 
+###################################################################
+################   Script to plot Supp Fig. 10    #################
+# Plot qqplot to check p-value calibration in sexvariate analysis #
+# based on top real pair in CFW                                   #
+###################################################################
+
 suppressMessages(library("gap")) # for qqplot
 
 real_file = "./data/CFW/VD/sexvariate/noBatch_pruned_dosages_include_DGE_IGE_IEE_cageEffect_corr_As1s2_one_all_estNste.Rdata"
 real_pheno = "Haem.EOS_percent_sex1_Haem.EOS_percent_sex2"
 sim_file = "./data/CFW/simulations/sexvariate/setSxHEp_IG1_IG2_1.0_s40_estNste.Rdata"
-sim_params = "./data/CFW/simulations/sexvariate/params_sex_V1.0_S40.txt"
+sim_params = "./data/CFW/simulations/params/params_sex_V1.0_S40.txt"
 outpdf = "./plot/CFW/SFig10.qqplot_sexvar.pdf"
 coroi = "corr_As1s2"
 

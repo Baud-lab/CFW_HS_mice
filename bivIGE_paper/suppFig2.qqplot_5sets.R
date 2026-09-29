@@ -1,4 +1,10 @@
-#!/usr/bin/env Rscript
+##################################################################
+############       Script to plot Supp Fig. 2      ###############
+# Plot qqplot to check p-value calibration in bivariate analysis #
+# for different sets of simulations based on different real      #
+# phenotypic pairs with increasing p-values (done only for CFW)  #
+##################################################################
+
 suppressMessages(library("gap")) # for qqplot
 
 # Keep uncommented the set to plot 
